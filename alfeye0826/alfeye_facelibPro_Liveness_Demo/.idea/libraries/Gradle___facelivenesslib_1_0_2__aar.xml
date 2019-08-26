@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: :facelivenesslib_1.0.2:@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/38fe0c85737a54595e844f5dc084aba0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/38fe0c85737a54595e844f5dc084aba0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/933fb1226cc3c52577039f63b50a7f30/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/933fb1226cc3c52577039f63b50a7f30/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
