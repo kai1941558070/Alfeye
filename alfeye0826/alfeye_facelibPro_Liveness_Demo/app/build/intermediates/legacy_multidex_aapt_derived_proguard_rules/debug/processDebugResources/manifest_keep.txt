@@ -1,0 +1,2 @@
+# Referenced at F:\jinanguangyu\Project0826_1\facePro_Liveness\alfeye_facelibPro_Liveness_Demo\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:23
+-keep class com.alfeye.facedemo.MyApp { <init>(); }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FaceDemo</string>
+    <string name="points_21">21 Points</string>
+    <string name="points_106">106 Points</string>
+    <string name="enter_track">Enter track</string>
+    <string name="error_title">Error</string>
+    <string name="license_initing">License Initing</string>
+    <string name="license_error_hint">Init license  failed. </string>
+    <string name="error_code_hint">Error Code is : %1$d,</string>
+    <string name="error_message_hint">Error Message is :</string>
+    <string name="file_error_hint">Read or Write files failed, Please check the permission</string>
+    <string name="licensefile_error_hint">Read or Write license file failed, Please check the permission</string>
+    <string name="no_licensefile_hint">No suitable License File ends with .lic in assets dir</string>
+    <string name="no_camera_perm_hint">Please give me the CAMERA permission</string>
+
+
+    <string name="main_init">Verifying, please wait</string>
+    <string name="verify">Verify</string>
+    <string name="verify_result">Verify Result:</string>
+    <string name="choosepicture">Choose Picture</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_picture_hint">Please choose the pictures to verify</string>
+    <string name="no_face_hint">Please make sure at least one face in the pictures</string>
+    <string name="choose_image_failed">Choose Image Failed.</string>
+    <string name="no_file_perm_hint">Please give me the READ_EXTERNAL_STORAGE permission to keep the sample run normal</string>
+    <string name="copymodel_failed_hint">Copy model file failed, please check if there is %1$s file in assets dir</string>
+
+
+</resources>

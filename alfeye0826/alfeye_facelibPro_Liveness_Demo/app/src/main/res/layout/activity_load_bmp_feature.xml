@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.alfeye.facedemo.activity.LoadBmpFeatureActivity">
+
+    <Button
+        android:id="@+id/btn_load_bmpfeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载图像库" />
+
+    <TextView
+        android:id="@+id/tv_load_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载进度：" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:text="人脸图片 放至/sdcard/A1文件夹"
+        android:textColor="#FF0000" />
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:text="返回"
+        android:layout_gravity="right|bottom"
+        android:layout_height="wrap_content" />
+</LinearLayout>

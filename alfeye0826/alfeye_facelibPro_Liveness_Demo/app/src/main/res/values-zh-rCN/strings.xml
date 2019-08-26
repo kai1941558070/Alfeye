@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FaceDemo</string>
+    <string name="points_21">换21点</string>
+    <string name="points_106">换106点</string>
+    <string name="enter_track">进入track</string>  
+    <string name="license_initing">正在初始化license</string>
+    <string name="error_title">出错啦</string>
+    <string name="license_error_hint">初始化License失败。</string>    
+    <string name="error_code_hint">错误码是：%1$d，</string>
+    <string name="error_message_hint">错误信息是：</string>
+    <string name="file_error_hint">文件读写错误，可能是没有读写权限</string>
+    <string name="licensefile_error_hint">授权文件读写错误，可能是没有读写权限</string>
+    <string name="no_licensefile_hint">工程的assets目录下缺少合适的 .lic文件</string>
+    <string name="no_camera_perm_hint">请打开相机权限</string>
+    <!--<string name="no_sdcard_perm_hint">请打开存储权限</string>-->
+
+    <string name="verify">比对</string>
+    <string name="verify_result">比对结果:</string>
+    <string name="main_init">正在比对，请稍等</string>
+    <string name="choosepicture">选取图片</string>
+    <string name="camera">相机</string>
+    <string name="gallery">相册</string>
+    <string name="cancel">取消</string>
+    <string name="no_picture_hint">图片不能为空，请选择图片</string>
+    <string name="no_face_hint">请确定用来对比的图片中都包含人脸</string>
+    <string name="choose_image_failed">选择图片出错</string>
+    <string name="no_file_perm_hint">请打开存储权限，否则sample不能正常运行</string>
+    <string name="copymodel_failed_hint">拷贝模型失败，请确认assets目录下有%1$s文件</string>
+
+</resources>
