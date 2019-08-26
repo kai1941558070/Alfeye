@@ -1,7 +1,7 @@
-#Mon Aug 26 14:53:54 CST 2019
-base.0=F\:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+#Mon Aug 26 17:05:44 CST 2019
+base.0=F\:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=F\:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+base.1=F\:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out

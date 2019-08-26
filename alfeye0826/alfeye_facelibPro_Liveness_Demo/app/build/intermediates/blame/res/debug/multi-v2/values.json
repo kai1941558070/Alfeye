@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
+                {
+                    "source": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "5,4,2,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "184,139,55,99",
+                        "endColumns": "39,44,43,39",
+                        "endOffsets": "219,179,94,134"
+                    },
+                    "to": {
+                        "startLines": "110,128,129,165",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "5548,6844,6889,9232",
+                        "endColumns": "39,44,43,39",
+                        "endOffsets": "5583,6884,6928,9267"
+                    }
+                },
                 {
                     "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\df3a0b96ec31c929617744d2249a9c91\\res\\values\\values.xml",
                     "from": {
@@ -18,23 +35,6 @@
                         "startOffsets": "7737,106533,106709,106831,107093,107288",
                         "endColumns": "88,65,121,60,65,66",
                         "endOffsets": "7821,106594,106826,106887,107154,107350"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\a95148582a69b3d0213b93e59fa1a6fe\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "4",
-                        "startOffsets": "144",
-                        "endColumns": "59",
-                        "endOffsets": "199"
-                    },
-                    "to": {
-                        "startLines": "339",
-                        "startColumns": "4",
-                        "startOffsets": "20779",
-                        "endColumns": "59",
-                        "endOffsets": "20834"
                     }
                 },
                 {
@@ -57,7 +57,7 @@
                     }
                 },
                 {
-                    "source": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "2,21,23,26,20,28,5,9,10,6,11,22,8,7,12,17,14,25,27,13,24,4,3,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -71,6 +71,23 @@
                         "startOffsets": "20170,20216,20258,20300,20369,20426,20549,20601,20667,20733,20839,20939,20983,21053,21113,21227,21288,21373,21465,21593,21695,21776,21826,21998,22040",
                         "endColumns": "45,41,41,68,56,122,51,65,65,45,99,43,69,59,113,60,84,91,127,101,80,49,47,41,56",
                         "endOffsets": "20211,20253,20295,20364,20421,20544,20596,20662,20728,20774,20934,20978,21048,21108,21222,21283,21368,21460,21588,21690,21771,21821,21869,22035,22092"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\ef317949fba7bad46dfddaf8fd55b70a\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "144",
+                        "endColumns": "59",
+                        "endOffsets": "199"
+                    },
+                    "to": {
+                        "startLines": "339",
+                        "startColumns": "4",
+                        "startOffsets": "20779",
+                        "endColumns": "59",
+                        "endOffsets": "20834"
                     }
                 },
                 {
@@ -93,24 +110,7 @@
                     }
                 },
                 {
-                    "source": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "5,4,2,3",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "184,139,55,99",
-                        "endColumns": "39,44,43,39",
-                        "endOffsets": "219,179,94,134"
-                    },
-                    "to": {
-                        "startLines": "110,128,129,165",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "5548,6844,6889,9232",
-                        "endColumns": "39,44,43,39",
-                        "endOffsets": "5583,6884,6928,9267"
-                    }
-                },
-                {
-                    "source": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "6,15",
                         "startColumns": "4,4",

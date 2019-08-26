@@ -57,5 +57,6 @@ dependencies {
 
     implementation(name: 'AlfeyeFacelibPro_2.0.4', ext: 'aar')
     implementation(name: 'facelivenesslib_1.0.2', ext: 'aar')
+    implementation files('libs\\com.alfeye.io2019-7-3.jar')
 
 }

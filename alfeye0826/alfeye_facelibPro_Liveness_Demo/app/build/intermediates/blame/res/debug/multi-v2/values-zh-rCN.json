@@ -1,14 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "outputFile": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
             "map": [
                 {
-                    "source": "F:\\jinanguangyu\\Project0826_1\\facePro_Liveness\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values-zh-rCN\\strings.xml",
+                    "source": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\values-zh-rCN\\strings.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                        "startLines": "2,21,23,26,20,28,5,9,10,7,11,22,8,6,12,19,14,25,27,13,24,4,3,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,1018,1095,1248,971,1372,189,405,460,296,514,1056,340,239,575,924,718,1190,1303,645,1133,144,101,838,876",
+                        "endColumns": "45,37,37,54,46,76,47,54,53,43,60,38,60,56,69,46,55,57,68,72,56,44,42,37,47",
+                        "endOffsets": "96,1051,1128,1298,1013,1444,232,455,509,335,570,1090,396,291,640,966,769,1243,1367,713,1185,184,139,871,919"
                     },
                     "to": {
                         "startLines": "21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47",
@@ -21,9 +23,11 @@
                 {
                     "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\9e8a15ea38522b548568a25e5ee6f7b3\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,258,381,476,576,658,755,861,937,1013,1091,1187,1283,1378,1475,1570,1668,1780,1874,1952",
+                        "endColumns": "95,106,122,94,99,81,96,105,75,75,77,95,95,94,96,94,97,111,93,77,100",
+                        "endOffsets": "146,253,376,471,571,653,750,856,932,1008,1086,1182,1278,1373,1470,1565,1663,1775,1869,1947,2048"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,44,45",

@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alfeye.a1io.DeviceControl;
 import com.alfeye.facedemo.R;
 
 import java.io.BufferedOutputStream;
@@ -95,7 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 values.put(MediaStore.Audio.Media.TITLE, file.getAbsolutePath());
                 photoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                DeviceControl.configCameraHdr(this,true);
                 startActivityForResult(intent,CAMERA);
+                boolean cameraHdrStatus = DeviceControl.getCameraHdrStatus(this);
+                Toast.makeText(this,"宽动态状态:"+cameraHdrStatus,Toast.LENGTH_SHORT).show();
+
                 break;
             default:
                 break;
@@ -159,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             String name = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
             File file = new File(sdCardDir, name + ".jpg");
             FileOutputStream fos = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             Log.d("zhangjikai", "保存成功！----路径："+file.getAbsolutePath());
             Toast.makeText(this,"保存成功!",Toast.LENGTH_SHORT).show();
             fos.flush();
