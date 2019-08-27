@@ -3,6 +3,7 @@ package com.alfeye.facedemo.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.alfeye.facedemo.R;
+import com.alfeye.facedemo.RecyclerViewOnClickListener;
+import com.alfeye.facedemo.utils.FileUtils;
 import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.util.List;
 
 public class AllPhotoRecyclerViewAdapter extends RecyclerView.Adapter<AllPhotoRecyclerViewAdapter.ViewHolder> {
@@ -22,9 +26,18 @@ public class AllPhotoRecyclerViewAdapter extends RecyclerView.Adapter<AllPhotoRe
 
     private List<String> imageList;
 
+    private RecyclerViewOnClickListener listener;
+
+    private String rootPath;
+
+    public void setListener(RecyclerViewOnClickListener listener) {
+        this.listener = listener;
+    }
+
     public AllPhotoRecyclerViewAdapter(Context mContext, List<String> imageList) {
         this.mContext = mContext;
         this.imageList = imageList;
+        rootPath=FileUtils.getSDPath();
     }
 
     @Override
@@ -35,15 +48,29 @@ public class AllPhotoRecyclerViewAdapter extends RecyclerView.Adapter<AllPhotoRe
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
         String s = imageList.get(position);
-        Log.d("zhangjikai", "onBindViewHolder: "+s);
+        Log.d("zhangjikai", "onBindViewHolder: "+rootPath+s);
         if (s!=null){
-//            Glide.with(mContext).load(s).into(holder.imageView);
+            Glide.with(mContext).load(Uri.fromFile(new File(s))).into(holder.imageView);
 
-            Bitmap bitmap = BitmapFactory.decodeFile(s);
-            holder.imageView.setImageBitmap(bitmap);
+//            Bitmap bitmap = BitmapFactory.decodeFile(rootPath+s);
+//            holder.imageView.setImageBitmap(bitmap);
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onClick(position);
+                }
+            });
+
+            holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    listener.onLongClick(position);
+                    return true;
+                }
+            });
         }
     }
 

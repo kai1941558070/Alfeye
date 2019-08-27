@@ -14,6 +14,7 @@ MERGED from [net.zetetic:android-database-sqlcipher:3.5.1] C:\Users\열\.gradle\c
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\열\.gradle\caches\transforms-2\files-2.1\3270322e51c8badb7f644951d459eeda\AndroidManifest.xml:15:1-21:12
 MERGED from [:AlfeyeFacelibPro_2.0.4:] C:\Users\열\.gradle\caches\transforms-2\files-2.1\ef317949fba7bad46dfddaf8fd55b70a\AndroidManifest.xml:2:1-11:12
 MERGED from [:facelivenesslib_1.0.2:] C:\Users\열\.gradle\caches\transforms-2\files-2.1\933fb1226cc3c52577039f63b50a7f30\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\35f77df798b34dcaef88bcdddcff4c44\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\4a2ef9c26619d4d613c621e8c064938a\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\0b33bf6cff22c1ad4df38856c5838f40\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\열\.gradle\caches\transforms-2\files-2.1\e2ffc439e825afaaad2603ab9dec88ed\AndroidManifest.xml:17:1-26:12
@@ -200,6 +201,8 @@ MERGED from [:AlfeyeFacelibPro_2.0.4:] C:\Users\열\.gradle\caches\transforms-2\f
 MERGED from [:AlfeyeFacelibPro_2.0.4:] C:\Users\열\.gradle\caches\transforms-2\files-2.1\ef317949fba7bad46dfddaf8fd55b70a\AndroidManifest.xml:7:5-9:41
 MERGED from [:facelivenesslib_1.0.2:] C:\Users\열\.gradle\caches\transforms-2\files-2.1\933fb1226cc3c52577039f63b50a7f30\AndroidManifest.xml:7:5-9:41
 MERGED from [:facelivenesslib_1.0.2:] C:\Users\열\.gradle\caches\transforms-2\files-2.1\933fb1226cc3c52577039f63b50a7f30\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\35f77df798b34dcaef88bcdddcff4c44\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\35f77df798b34dcaef88bcdddcff4c44\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\4a2ef9c26619d4d613c621e8c064938a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\4a2ef9c26619d4d613c621e8c064938a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\열\.gradle\caches\transforms-2\files-2.1\0b33bf6cff22c1ad4df38856c5838f40\AndroidManifest.xml:20:5-44

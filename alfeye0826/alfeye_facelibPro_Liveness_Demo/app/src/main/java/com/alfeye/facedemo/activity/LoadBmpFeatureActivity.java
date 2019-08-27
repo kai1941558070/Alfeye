@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alfeye.facedemo.R;
+import com.alfeye.facedemo.RecyclerViewOnClickListener;
 import com.alfeye.facedemo.adapter.AllPhotoRecyclerViewAdapter;
 import com.facelib.LicenseST.DialogUtil;
 import com.facelib.entity.UserFeature;
@@ -57,6 +60,22 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
 
     private GetBmpFeatureManager getBmpFeatureManager;
 
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+
+                case 1:
+                    initAdapter(imageList);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +84,8 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
         imageList.clear();
         requestAllPermissionsIfNeed();
 
+        GridLayoutManager manager=new GridLayoutManager(LoadBmpFeatureActivity.this,4, OrientationHelper.VERTICAL, false);
+        mRecyclerViewAllPhoto.setLayoutManager(manager);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,11 +126,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
 
                 Toast.makeText(LoadBmpFeatureActivity.this, "加载图片库完成", Toast.LENGTH_SHORT).show();
 
-                GridLayoutManager manager=new GridLayoutManager(LoadBmpFeatureActivity.this,4, OrientationHelper.VERTICAL, false);
-                mRecyclerViewAllPhoto.setLayoutManager(manager);
-                adapter=new AllPhotoRecyclerViewAdapter(LoadBmpFeatureActivity.this,imageList);
-                mRecyclerViewAllPhoto.setAdapter(adapter);
-
+                handler.sendEmptyMessage(1);
             }
 
             @Override
@@ -161,4 +178,19 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
         }
     }
 
+    private void initAdapter(List<String> images){
+        adapter=new AllPhotoRecyclerViewAdapter(LoadBmpFeatureActivity.this,images);
+        mRecyclerViewAllPhoto.setAdapter(adapter);
+        adapter.setListener(new RecyclerViewOnClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(LoadBmpFeatureActivity.this,"点击了:"+position,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(int position) {
+                Toast.makeText(LoadBmpFeatureActivity.this,"长按了:"+position,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
