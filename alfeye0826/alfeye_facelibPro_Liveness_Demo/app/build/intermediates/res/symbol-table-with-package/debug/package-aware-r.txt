@@ -849,7 +849,7 @@ layout activity_take_photo
 layout activity_track
 layout activity_verify
 layout base_activity_track
-layout item_allphoto
+layout item_allphoto2
 layout item_popupwindows
 layout notification_action
 layout notification_action_tombstone

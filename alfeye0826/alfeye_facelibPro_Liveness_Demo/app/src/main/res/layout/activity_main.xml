@@ -9,6 +9,12 @@
     tools:context="com.alfeye.facedemo.activity.MainActivity">
 
     <Button
+        android:id="@+id/btn_back"
+        android:text="finish"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
         android:id="@+id/btn_track_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

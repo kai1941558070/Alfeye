@@ -848,7 +848,7 @@ int layout activity_take_photo 0x7f09001f
 int layout activity_track 0x7f090020
 int layout activity_verify 0x7f090021
 int layout base_activity_track 0x7f090022
-int layout item_allphoto 0x7f090023
+int layout item_allphoto2 0x7f090023
 int layout item_popupwindows 0x7f090024
 int layout notification_action 0x7f090025
 int layout notification_action_tombstone 0x7f090026

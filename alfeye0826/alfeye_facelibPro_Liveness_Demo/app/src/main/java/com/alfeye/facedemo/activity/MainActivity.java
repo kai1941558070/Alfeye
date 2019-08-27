@@ -1,6 +1,5 @@
 package com.alfeye.facedemo.activity;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,15 +19,12 @@ import android.widget.Toast;
 import com.alfeye.a1io.DeviceControl;
 import com.alfeye.facedemo.R;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
     Button btnTakePhoto;
     @BindView(R.id.iv_showImage)
     ImageView ivShowImage;
+    @BindView(R.id.btn_back)
+    Button btnBack;
     private Uri photoUri;
-    public String sdCardDir = Environment.getExternalStorageDirectory() + "/"+"A1/";
+    public String sdCardDir = Environment.getExternalStorageDirectory() + "/" + "A1/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_track_face, R.id.btn_verify_activity, R.id.btn_face11_recog, R.id.btn_load_bmpfeature, R.id.btn_face1n_recog, R.id.btn_takePhoto})
+    @OnClick({R.id.btn_track_face, R.id.btn_verify_activity, R.id.btn_face11_recog, R.id.btn_load_bmpfeature, R.id.btn_face1n_recog, R.id.btn_takePhoto,R.id.btn_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_track_face:
@@ -85,21 +82,25 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_face1n_recog:
                 startActivity(Face1NRecogActivity.class);
                 break;
+
+            case R.id.btn_back:
+                finish();
+                break;
                 /*
                 拍照存储
                  */
             case R.id.btn_takePhoto:
                 Toast.makeText(this, "take photo test", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                File file = new File(Environment.getExternalStorageDirectory()+"/Pitctures", System.currentTimeMillis() + ".jpg");
+                File file = new File(Environment.getExternalStorageDirectory() + "/Pitctures", System.currentTimeMillis() + ".jpg");
                 ContentValues values = new ContentValues();
                 values.put(MediaStore.Audio.Media.TITLE, file.getAbsolutePath());
                 photoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                DeviceControl.configCameraHdr(this,true);
-                startActivityForResult(intent,CAMERA);
+                DeviceControl.configCameraHdr(this, true);
+                startActivityForResult(intent, CAMERA);
                 boolean cameraHdrStatus = DeviceControl.getCameraHdrStatus(this);
-                Toast.makeText(this,"宽动态状态:"+cameraHdrStatus,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "宽动态状态:" + cameraHdrStatus, Toast.LENGTH_SHORT).show();
 
                 break;
             default:
@@ -111,18 +112,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("zhangjikai", "requestCode:"+requestCode);
-        Log.d("zhangjikai", "resultCode:"+resultCode);
-        Log.d("zhangjikai", "data:"+data);
+        Log.d("zhangjikai", "requestCode:" + requestCode);
+        Log.d("zhangjikai", "resultCode:" + resultCode);
+        Log.d("zhangjikai", "data:" + data);
 
-        if (requestCode == CAMERA&&resultCode==-1) {
+        if (requestCode == CAMERA && resultCode == -1) {
             Uri uri = photoUri;
-            Log.d("zhangjikai", "保存Uri："+uri);
+            Log.d("zhangjikai", "保存Uri：" + uri);
             String imagePath = getImagePath(uri, null);
-            Log.d("zhangjikai", "保存path："+imagePath);
+            Log.d("zhangjikai", "保存path：" + imagePath);
             displayImage(imagePath);
-        }else if (resultCode==0){
-            Toast.makeText(this,"您已取消拍照",Toast.LENGTH_SHORT).show();
+        } else if (resultCode == 0) {
+            Toast.makeText(this, "您已取消拍照", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -142,14 +143,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return path;
     }
+
     private void displayImage(String imagePath) {
         if (imagePath != null) {
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
             ivShowImage.setImageBitmap(bitmap);
-            Log.d("zhangjikai", "图片路径："+imagePath);
+            Log.d("zhangjikai", "图片路径：" + imagePath);
             saveBitmap(bitmap);
-            int byteCount = bitmap.getByteCount()/1024/1024;
-            Log.d("zhangjikai", "图片大小："+byteCount+"m");
+            int byteCount = bitmap.getByteCount() / 1024 / 1024;
+            Log.d("zhangjikai", "图片大小：" + byteCount + "m");
         } else {
             Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();
         }
@@ -165,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
             File file = new File(sdCardDir, name + ".jpg");
             FileOutputStream fos = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            Log.d("zhangjikai", "保存成功！----路径："+file.getAbsolutePath());
-            Toast.makeText(this,"保存成功!",Toast.LENGTH_SHORT).show();
+            Log.d("zhangjikai", "保存成功！----路径：" + file.getAbsolutePath());
+            Toast.makeText(this, "保存成功!", Toast.LENGTH_SHORT).show();
             fos.flush();
             fos.close();
         } catch (FileNotFoundException e) {

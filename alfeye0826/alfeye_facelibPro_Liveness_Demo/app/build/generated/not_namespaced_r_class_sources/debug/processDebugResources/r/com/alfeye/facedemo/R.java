@@ -3035,7 +3035,7 @@ public final class R {
     public static final int activity_track=0x7f090020;
     public static final int activity_verify=0x7f090021;
     public static final int base_activity_track=0x7f090022;
-    public static final int item_allphoto=0x7f090023;
+    public static final int item_allphoto2=0x7f090023;
     public static final int item_popupwindows=0x7f090024;
     public static final int notification_action=0x7f090025;
     public static final int notification_action_tombstone=0x7f090026;

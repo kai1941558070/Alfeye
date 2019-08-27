@@ -28,6 +28,8 @@ public class MainActivity_ViewBinding implements Unbinder {
 
   private View view2131165225;
 
+  private View view2131165220;
+
   @UiThread
   public MainActivity_ViewBinding(MainActivity target) {
     this(target, target.getWindow().getDecorView());
@@ -93,6 +95,15 @@ public class MainActivity_ViewBinding implements Unbinder {
       }
     });
     target.ivShowImage = Utils.findRequiredViewAsType(source, R.id.iv_showImage, "field 'ivShowImage'", ImageView.class);
+    view = Utils.findRequiredView(source, R.id.btn_back, "field 'btnBack' and method 'onViewClicked'");
+    target.btnBack = Utils.castView(view, R.id.btn_back, "field 'btnBack'", Button.class);
+    view2131165220 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
   }
 
   @Override
@@ -109,6 +120,7 @@ public class MainActivity_ViewBinding implements Unbinder {
     target.btnTrackFace = null;
     target.btnTakePhoto = null;
     target.ivShowImage = null;
+    target.btnBack = null;
 
     view2131165227.setOnClickListener(null);
     view2131165227 = null;
@@ -122,5 +134,7 @@ public class MainActivity_ViewBinding implements Unbinder {
     view2131165226 = null;
     view2131165225.setOnClickListener(null);
     view2131165225 = null;
+    view2131165220.setOnClickListener(null);
+    view2131165220 = null;
   }
 }

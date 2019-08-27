@@ -3,15 +3,16 @@ package com.alfeye.facedemo.activity;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -41,8 +42,7 @@ import butterknife.OnClick;
 public class LoadBmpFeatureActivity extends AppCompatActivity {
     // 图片库 路径
     public static String PATH_BMP_FEATURE = Environment.getExternalStorageDirectory() + File.separator + "A1";
-
-    public static List<String> imageList=new ArrayList<>();
+    public static List<String> imageList = new ArrayList<>();
 
     private AllPhotoRecyclerViewAdapter adapter;
 
@@ -60,11 +60,11 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
 
     private GetBmpFeatureManager getBmpFeatureManager;
 
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
 
                 case 1:
                     initAdapter(imageList);
@@ -84,7 +84,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
         imageList.clear();
         requestAllPermissionsIfNeed();
 
-        GridLayoutManager manager=new GridLayoutManager(LoadBmpFeatureActivity.this,4, OrientationHelper.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(LoadBmpFeatureActivity.this, 4, OrientationHelper.VERTICAL, false);
         mRecyclerViewAllPhoto.setLayoutManager(manager);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +103,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
             public void onGetBmpFeatureLoading(String s, String s1, int i) {
 
                 tvLoadCount.setText("加载图片: " + s1 + "  加载个数：" + i);
-                String imagePath=PATH_BMP_FEATURE+"/"+s1;
+                String imagePath = PATH_BMP_FEATURE + "/" + s1;
                 imageList.add(imagePath);
             }
 
@@ -125,7 +125,6 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(LoadBmpFeatureActivity.this, "加载图片库完成", Toast.LENGTH_SHORT).show();
-
                 handler.sendEmptyMessage(1);
             }
 
@@ -149,7 +148,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
     @OnClick(R.id.btn_load_bmpfeature)
     public void onViewClicked() {
         Toast.makeText(this, "开始获取人脸图片特征", Toast.LENGTH_SHORT).show();
-
+        imageList.clear();
         getBmpFeatureManager.getAllBmpFaceFeature(PATH_BMP_FEATURE);
     }
 
@@ -178,19 +177,51 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
         }
     }
 
-    private void initAdapter(List<String> images){
-        adapter=new AllPhotoRecyclerViewAdapter(LoadBmpFeatureActivity.this,images);
+    private void initAdapter(List<String> images) {
+        adapter = new AllPhotoRecyclerViewAdapter(LoadBmpFeatureActivity.this, images);
         mRecyclerViewAllPhoto.setAdapter(adapter);
         adapter.setListener(new RecyclerViewOnClickListener() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(LoadBmpFeatureActivity.this,"点击了:"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoadBmpFeatureActivity.this, "点击了:" + position, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClick(int position) {
-                Toast.makeText(LoadBmpFeatureActivity.this,"长按了:"+position,Toast.LENGTH_SHORT).show();
+                deleteItemData(position);
             }
         });
     }
+
+    private void deleteItemData(final int position) {
+
+        android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(LoadBmpFeatureActivity.this)
+                .setTitle("确定要删除这张图片吗？")
+                .setNeutralButton("放弃", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        File file=new File(imageList.get(position));
+                        if (file.isFile()&&file.exists()){
+                            boolean delete = file.delete();
+                            getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,MediaStore.Images.Media.DATA + "=?",new String[]{imageList.get(position)});
+                            if (delete) {
+                                Toast.makeText(LoadBmpFeatureActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                                imageList.remove(position);
+                                adapter.notifyDataSetChanged();
+                            } else {
+                                Toast.makeText(LoadBmpFeatureActivity.this, "删除失败", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
+        dialog.show();
+    }
+
 }

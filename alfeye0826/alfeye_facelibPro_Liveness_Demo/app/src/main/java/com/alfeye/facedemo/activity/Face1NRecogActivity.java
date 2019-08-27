@@ -1,5 +1,6 @@
 package com.alfeye.facedemo.activity;
 
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alfeye.a1io.A1IoDevBaseUtil;
+import com.alfeye.a1io.A1IoDevManager;
 import com.alfeye.facedemo.R;
 import com.bumptech.glide.Glide;
 import com.facelib.activity.BaseCameraAndFaceLivenessRecogActivity;
@@ -49,6 +52,7 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     Button btnBack;
 
     private Face1NRecogManager face1NRecogManager;
+    private A1IoDevBaseUtil a1IoDevBaseUtil;
 
     @Override
     protected int getDefaultCameraFacing() {
@@ -64,6 +68,15 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+
+        /**
+         * 初始化补光灯工具类
+         */
+        a1IoDevBaseUtil = A1IoDevManager.initIOManager();
+
+        int numberOfCameras = Camera.getNumberOfCameras();
+        Log.d("zhangjikai", "摄像头数量:"+numberOfCameras);
+        openAllCamera();
 
         face1NRecogManager = Face1NRecogManager.ins();
         //加载特征库
@@ -87,6 +100,8 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     protected void onResume() {
         super.onResume();
         face1NRecogManager.startFaceRecog();
+        a1IoDevBaseUtil.openLED(20);
+        a1IoDevBaseUtil.openIRDA();
     }
 
     @Override
@@ -168,9 +183,23 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
         }
     };
 
+    private void openAllCamera(){
+        int cameraId = -1;
+        int numberOfCameras = Camera.getNumberOfCameras();
+        for (int i = 0; i <= numberOfCameras; i++) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                cameraId = i;
+                break;
+            }
+        }
+        Camera.open(cameraId);
+    }
     @Override
     protected void onDestroy() {
         face1NRecogManager.stopFaceRecog();
+        a1IoDevBaseUtil.openLED(0);
         onFaceRecogListener = null;
         super.onDestroy();
     }

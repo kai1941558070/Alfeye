@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alfeye.facedemo.R;
 import com.alfeye.facedemo.RecyclerViewOnClickListener;
@@ -42,7 +45,7 @@ public class AllPhotoRecyclerViewAdapter extends RecyclerView.Adapter<AllPhotoRe
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_allphoto,null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_allphoto2,null);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
@@ -55,8 +58,6 @@ public class AllPhotoRecyclerViewAdapter extends RecyclerView.Adapter<AllPhotoRe
         if (s!=null){
             Glide.with(mContext).load(Uri.fromFile(new File(s))).into(holder.imageView);
 
-//            Bitmap bitmap = BitmapFactory.decodeFile(rootPath+s);
-//            holder.imageView.setImageBitmap(bitmap);
             holder.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
