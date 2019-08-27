@@ -1176,6 +1176,10 @@
         "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\4276b003b139da51a8c6b09d6fa5ef49\\res\\layout\\notification_action.xml"
     },
     {
+        "merged": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_allphoto.xml.flat",
+        "source": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\src\\main\\res\\layout\\item_allphoto.xml"
+    },
+    {
         "merged": "F:\\mgit\\alfeye0826\\alfeye_facelibPro_Liveness_Demo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\凯\\.gradle\\caches\\transforms-2\\files-2.1\\9e8a15ea38522b548568a25e5ee6f7b3\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },

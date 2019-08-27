@@ -8,6 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alfeye.facedemo.R;
+import com.alfeye.facedemo.adapter.AllPhotoRecyclerViewAdapter;
 import com.facelib.LicenseST.DialogUtil;
 import com.facelib.entity.UserFeature;
 import com.facelib.faceRecog.Face1NRecogManager;
@@ -23,6 +28,7 @@ import com.facelib.featureStorage.GetBmpFeatureManager;
 import com.facelib.featureStorage.OnGetBmpFeatureListener;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,12 +39,19 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
     // 图片库 路径
     public static String PATH_BMP_FEATURE = Environment.getExternalStorageDirectory() + File.separator + "A1";
 
+    public static List<String> imageList=new ArrayList<>();
+
+    private AllPhotoRecyclerViewAdapter adapter;
+
     @BindView(R.id.btn_load_bmpfeature)
     Button btnLoadBmpfeature;
     @BindView(R.id.tv_load_count)
     TextView tvLoadCount;
     @BindView(R.id.btn_back)
     Button btnBack;
+    //初始化控件
+    @BindView(R.id.mRecyclerView_allPhoto)
+    RecyclerView mRecyclerViewAllPhoto;
 
     private AlertDialog errorDialog;
 
@@ -49,7 +62,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_bmp_feature);
         ButterKnife.bind(this);
-
+        imageList.clear();
         requestAllPermissionsIfNeed();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +82,8 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
             public void onGetBmpFeatureLoading(String s, String s1, int i) {
 
                 tvLoadCount.setText("加载图片: " + s1 + "  加载个数：" + i);
+                String imagePath=PATH_BMP_FEATURE+"/"+s1;
+                imageList.add(imagePath);
             }
 
             @Override
@@ -89,6 +104,12 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(LoadBmpFeatureActivity.this, "加载图片库完成", Toast.LENGTH_SHORT).show();
+
+                GridLayoutManager manager=new GridLayoutManager(LoadBmpFeatureActivity.this,4, OrientationHelper.VERTICAL, false);
+                mRecyclerViewAllPhoto.setLayoutManager(manager);
+                adapter=new AllPhotoRecyclerViewAdapter(LoadBmpFeatureActivity.this,imageList);
+                mRecyclerViewAllPhoto.setAdapter(adapter);
+
             }
 
             @Override
@@ -102,7 +123,7 @@ public class LoadBmpFeatureActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         getBmpFeatureManager.destroy();
-
+        imageList.clear();
         if (errorDialog != null && errorDialog.isShowing()) {
             errorDialog.dismiss();
         }

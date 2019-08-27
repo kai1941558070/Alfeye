@@ -149,6 +149,7 @@ attr initialActivityCount
 attr isLightTheme
 attr itemPadding
 attr layout
+attr layoutManager
 attr layout_constraintBaseline_creator
 attr layout_constraintBaseline_toBaselineOf
 attr layout_constraintBottom_creator
@@ -232,6 +233,7 @@ attr radioButtonStyle
 attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
+attr reverseLayout
 attr searchHintIcon
 attr searchIcon
 attr searchViewStyle
@@ -243,11 +245,13 @@ attr showDividers
 attr showText
 attr showTitle
 attr singleChoiceItemLayout
+attr spanCount
 attr spinBars
 attr spinnerDropDownItemStyle
 attr spinnerStyle
 attr splitTrack
 attr srcCompat
+attr stackFromEnd
 attr state_above_anchor
 attr subMenuArrow
 attr submitBackground
@@ -491,6 +495,9 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen item_touch_helper_max_drag_scroll_per_frame
+dimen item_touch_helper_swipe_escape_max_velocity
+dimen item_touch_helper_swipe_escape_velocity
 dimen notification_action_icon_size
 dimen notification_action_text_size
 dimen notification_big_circle_margin
@@ -695,6 +702,8 @@ id italic
 id item_camera
 id item_cancel
 id item_gallery
+id item_imageView
+id item_touch_helper_previous_elevation
 id iv_bmp
 id iv_cardbmp
 id iv_showImage
@@ -702,6 +711,7 @@ id line1
 id line3
 id listMode
 id list_item
+id mRecyclerView_allPhoto
 id media_actions
 id message
 id middle
@@ -820,6 +830,7 @@ layout activity_take_photo
 layout activity_track
 layout activity_verify
 layout base_activity_track
+layout item_allphoto
 layout item_popupwindows
 layout notification_action
 layout notification_action_tombstone
@@ -1297,6 +1308,7 @@ styleable MenuView android_windowAnimationStyle android_itemTextAppearance andro
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
+styleable RecyclerView android_orientation android_descendantFocusability layoutManager reverseLayout spanCount stackFromEnd
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode

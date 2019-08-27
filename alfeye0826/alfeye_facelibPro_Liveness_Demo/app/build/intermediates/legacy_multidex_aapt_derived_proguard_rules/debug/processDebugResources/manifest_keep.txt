@@ -1,2 +1,2 @@
-# Referenced at F:\mgit\alfeye0826\alfeye_facelibPro_Liveness_Demo\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:23
+# Referenced at F:\mgit\alfeye0826\alfeye_facelibPro_Liveness_Demo\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:27
 -keep class com.alfeye.facedemo.MyApp { <init>(); }

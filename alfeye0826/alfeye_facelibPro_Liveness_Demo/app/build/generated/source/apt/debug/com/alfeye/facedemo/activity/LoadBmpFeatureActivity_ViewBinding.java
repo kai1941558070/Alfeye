@@ -3,6 +3,7 @@ package com.alfeye.facedemo.activity;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class LoadBmpFeatureActivity_ViewBinding implements Unbinder {
     });
     target.tvLoadCount = Utils.findRequiredViewAsType(source, R.id.tv_load_count, "field 'tvLoadCount'", TextView.class);
     target.btnBack = Utils.findRequiredViewAsType(source, R.id.btn_back, "field 'btnBack'", Button.class);
+    target.mRecyclerViewAllPhoto = Utils.findRequiredViewAsType(source, R.id.mRecyclerView_allPhoto, "field 'mRecyclerViewAllPhoto'", RecyclerView.class);
   }
 
   @Override
@@ -51,6 +53,7 @@ public class LoadBmpFeatureActivity_ViewBinding implements Unbinder {
     target.btnLoadBmpfeature = null;
     target.tvLoadCount = null;
     target.btnBack = null;
+    target.mRecyclerViewAllPhoto = null;
 
     view2131165223.setOnClickListener(null);
     view2131165223 = null;
