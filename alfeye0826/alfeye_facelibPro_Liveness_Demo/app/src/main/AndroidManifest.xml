@@ -21,7 +21,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TakePhotoActivity"></activity>
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name">
