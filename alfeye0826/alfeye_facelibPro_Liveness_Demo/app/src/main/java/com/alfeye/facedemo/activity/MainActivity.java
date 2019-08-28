@@ -90,18 +90,20 @@ public class MainActivity extends AppCompatActivity {
                 拍照存储
                  */
             case R.id.btn_takePhoto:
-                Toast.makeText(this, "take photo test", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "take photo test", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File file = new File(Environment.getExternalStorageDirectory() + "/Pitctures", System.currentTimeMillis() + ".jpg");
                 ContentValues values = new ContentValues();
                 values.put(MediaStore.Audio.Media.TITLE, file.getAbsolutePath());
                 photoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                DeviceControl.configCameraHdr(this, true);
+                /**
+                 * 打开宽动态状态
+                 */
+                cameraHdrManager(true);
                 startActivityForResult(intent, CAMERA);
                 boolean cameraHdrStatus = DeviceControl.getCameraHdrStatus(this);
-                Toast.makeText(this, "宽动态状态:" + cameraHdrStatus, Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(this, "宽动态状态:" + cameraHdrStatus, Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -122,7 +124,12 @@ public class MainActivity extends AppCompatActivity {
             String imagePath = getImagePath(uri, null);
             Log.d("zhangjikai", "保存path：" + imagePath);
             displayImage(imagePath);
+            /*
+            拍照成功或取消后，关闭宽动态
+             */
+            cameraHdrManager(false);
         } else if (resultCode == 0) {
+            cameraHdrManager(false);
             Toast.makeText(this, "您已取消拍照", Toast.LENGTH_SHORT).show();
         }
     }
@@ -150,10 +157,8 @@ public class MainActivity extends AppCompatActivity {
             ivShowImage.setImageBitmap(bitmap);
             Log.d("zhangjikai", "图片路径：" + imagePath);
             saveBitmap(bitmap);
-            int byteCount = bitmap.getByteCount() / 1024 / 1024;
-            Log.d("zhangjikai", "图片大小：" + byteCount + "m");
         } else {
-            Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "加载出错", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -179,4 +184,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void cameraHdrManager(boolean open){
+        if (open){
+            DeviceControl.configCameraHdr(this, true);
+            Log.d("zhangjikai", "cameraHdrManager: "+"宽动态开启");
+        }else {
+            DeviceControl.configCameraHdr(this, false);
+            Log.d("zhangjikai", "cameraHdrManager: "+"宽动态关闭");
+        }
+    }
 }

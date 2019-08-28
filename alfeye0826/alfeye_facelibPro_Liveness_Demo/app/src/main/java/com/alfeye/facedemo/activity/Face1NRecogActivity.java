@@ -3,6 +3,7 @@ package com.alfeye.facedemo.activity;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,8 @@ import com.facelib.utils.FaceConstants;
 import com.sensetime.faceapi.StFace;
 import com.sensetime.faceapi.StFaceOrientation;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -39,7 +42,6 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     ImageView ivBmp;
     @BindView(R.id.iv_cardbmp)
     ImageView ivCardbmp;
-
     @BindView(R.id.tv_face_info)
     TextView tvFaceInfo;
     @BindView(R.id.tv_liveness_status)
@@ -68,15 +70,16 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-
         /**
          * 初始化补光灯工具类
          */
         a1IoDevBaseUtil = A1IoDevManager.initIOManager();
-
+        /**
+         * 查询可用摄像头数量
+         * 目前黑白红外摄像头id为0，彩色摄像头id为1。
+         */
         int numberOfCameras = Camera.getNumberOfCameras();
-        Log.d("zhangjikai", "摄像头数量:"+numberOfCameras);
-        openAllCamera();
+        Log.d("zhangjikai", "摄像头数量:" + numberOfCameras);
 
         face1NRecogManager = Face1NRecogManager.ins();
         //加载特征库
@@ -100,7 +103,13 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
     protected void onResume() {
         super.onResume();
         face1NRecogManager.startFaceRecog();
+        /*
+        补光灯设置为20
+         */
         a1IoDevBaseUtil.openLED(20);
+        /*
+        打开红外
+         */
         a1IoDevBaseUtil.openIRDA();
     }
 
@@ -157,16 +166,12 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
 
             if (resultFaceFS.getFaceFS() >= FaceConstants.ST_THRESHOLD) {
                 //比对成功
-
                 //比对的现场照
                 //faceEIS.getBitmap()
-
             }
 
             Glide.with(Face1NRecogActivity.this).load(resultFaceFS.getFilePath()).into(ivCardbmp);
-
             ivBmp.setImageBitmap(faceEIS.getBitmap());
-
             String faceFs = String.format("比对结果：%6f", resultFaceFS.getFaceFS());
             tvFaceInfo.setText(faceFs);
         }
@@ -178,30 +183,56 @@ public class Face1NRecogActivity extends BaseCameraAndFaceLivenessRecogActivity 
 
         @Override
         public void onEndFaceRecog() {
-
             Log.d(TAG, "比对时间: " + (System.currentTimeMillis() - curTime));
         }
     };
 
-    private void openAllCamera(){
-        int cameraId = -1;
-        int numberOfCameras = Camera.getNumberOfCameras();
-        for (int i = 0; i <= numberOfCameras; i++) {
-            Camera.CameraInfo info = new Camera.CameraInfo();
-            Camera.getCameraInfo(i, info);
-            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-                cameraId = i;
-                break;
-            }
-        }
-        Camera.open(cameraId);
-    }
     @Override
     protected void onDestroy() {
+        /**
+         * 释放资源
+         */
         face1NRecogManager.stopFaceRecog();
         a1IoDevBaseUtil.openLED(0);
+        a1IoDevBaseUtil.closeIRDA();
         onFaceRecogListener = null;
         super.onDestroy();
     }
 
+    /**
+     * 测试红外摄像机是否开启
+     */
+//    @Override
+//    public void surfaceCreated(SurfaceHolder surfaceHolder) {
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Camera camera = Camera.open(0);
+//                try {
+//                    camera.setPreviewDisplay(holder);
+//                    camera.setPreviewCallback(new Camera.PreviewCallback() {
+//                        @Override
+//                        public void onPreviewFrame(byte[] bytes, Camera camera) {
+//
+//                        }
+//                    });
+//                    camera.setDisplayOrientation(90);
+//                    camera.startPreview();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+//    }
+//
+//    @Override
+//    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+//
+//    }
+//
+//    @Override
+//    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+//
+//    }
 }
